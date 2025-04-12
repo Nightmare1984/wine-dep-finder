@@ -1,7 +1,7 @@
 # Wine dependencie Finder
 
 ## Overview
-Wine dependencies finder that trys's to find windows dependencies based on dll files in a folder Thats With its excutable in The Same folder 
+Wine dependencie finder that trys's to find windows dependencies based on dll files in a folder Thats With its excutable in The Same folder 
 
 ## Installation
 To get started with the Wine Dependency Finder, follow these steps:
