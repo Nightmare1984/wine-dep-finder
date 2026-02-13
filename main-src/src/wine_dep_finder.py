@@ -8,7 +8,6 @@ def analyze_windows_program(file_path):
     if not os.path.exists(file_path):
         print(f"Error: File '{file_path}' does not exist.")
         return
-
     try:
         pe = pefile.PE(file_path)
         print(f"Analyzing: {file_path}")
@@ -19,15 +18,12 @@ def analyze_windows_program(file_path):
             imported_dlls.append(dll_name)
             print(f" - {dll_name}")
         pe.close()
-
         # Provide Winetricks recommendations
         recommend_winetricks_components(imported_dlls)
-
     except pefile.PEFormatError:
         print("Error: The file is not a valid PE (Portable Executable) file.")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
-
 def recommend_winetricks_components(imported_dlls):
     """
     Recommend Winetricks DLLs or components based on imported DLLs.
@@ -51,6 +47,7 @@ def recommend_winetricks_components(imported_dlls):
         "xinput1_3.dll": "xinput",
         "xinput1_4.dll": "xinput",
         "dxgi.dll": "dxvk",
+        "d3d11.dll": "dxvk",
         "dinput8.dll": "dinput",
         "vulkan-1.dll": "vulkan",
         "ucrtbase.dll": "vcrun2019",
@@ -81,13 +78,11 @@ def recommend_winetricks_components(imported_dlls):
     for dll in imported_dlls:
         if dll.lower() in winetricks_mapping:
             recommended.add(winetricks_mapping[dll.lower()])
-
     if recommended:
         for component in recommended:
             print(f" - {component}")
     else:
         print("No specific Winetricks components recommended for the imported DLLs.")
-
 if __name__ == "__main__":
     file_path = input("Enter the path to the Windows executable file: ").strip()
     analyze_windows_program(file_path)
