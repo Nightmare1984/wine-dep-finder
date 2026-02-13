@@ -46,6 +46,7 @@ def recommend_winetricks_components(imported_dlls):
         "msvcp150.dll": "vcrun2022",
         "xinput1_3.dll": "xinput",
         "xinput1_4.dll": "xinput",
+        "xinput9_1_0.dll": "xinput",
         "dxgi.dll": "dxvk",
         "d3d11.dll": "dxvk",
         "dinput8.dll": "dinput",
